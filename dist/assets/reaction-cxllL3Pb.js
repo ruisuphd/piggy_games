@@ -1,0 +1,10 @@
+import{n as m,t as z,c as b,r as R,s as $,a as C}from"./index-Chvr_AIW.js";import{s as L}from"./victory-Ds4rta5I.js";const u=5;function k(a){const c=sessionStorage.getItem("player");if(!c){m("");return}const p=z(),v=b(`reaction-${p}`),y=Array.from({length:u},()=>R(1500,4e3,v));let s=0,i=[],t="idle",l=null,f=0;a.innerHTML=`
+    <div class="reaction-game fade-in" style="display:flex;flex-direction:column;flex:1">
+      <button class="back-btn" id="rxback">← Hub</button>
+      <div class="game-header"><span class="icon">⚡</span><h2>Reaction Time</h2></div>
+      <div class="reaction-zone wait" id="zone">
+        <div class="reaction-msg" id="msg">Tap to start</div>
+      </div>
+      <ul class="reaction-times" id="times"></ul>
+    </div>
+  `;const n=a.querySelector("#zone"),o=a.querySelector("#msg"),T=a.querySelector("#times");a.querySelector("#rxback").onclick=()=>m("hub");function h(){t="waiting",n.className="reaction-zone wait",o.textContent="Wait for green...",l=setTimeout(()=>{t="go",n.className="reaction-zone go",o.innerHTML=`TAP!<span class="reaction-round">Round ${s+1}/${u}</span>`,f=performance.now()},y[s])}function g(){if(t==="idle"){h();return}if(t==="waiting"){clearTimeout(l),t="idle",n.className="reaction-zone early",o.textContent="Too early! Tap to retry";return}if(t==="go"){const e=Math.round(performance.now()-f);i.push(e),s++,x(s,e),s>=u?w():(t="idle",n.className="reaction-zone wait",o.textContent="Tap for next round");return}}function x(e,d){const r=document.createElement("li");r.innerHTML=`<span>Round ${e}</span><span>${d}ms</span>`,T.appendChild(r)}async function w(){t="done",n.className="reaction-zone done";const e=Math.round(i.reduce((d,r)=>d+r,0)/i.length);o.textContent=`Average: ${e}ms`,L(`${e}ms avg!`),await $(p,"reaction",c,{player:c,avg_ms:e,times:i,completed:!0}),setTimeout(()=>m("results/reaction"),1800)}n.addEventListener("click",g),n.addEventListener("touchstart",e=>{e.preventDefault(),g()},{passive:!1}),C(()=>{clearTimeout(l)})}export{k as render};

@@ -1,0 +1,1 @@
+function t(o="Complete!"){const e=document.createElement("div");e.className="victory-overlay",e.innerHTML=`<div class="victory-text">${o}</div>`,document.body.appendChild(e),setTimeout(()=>e.remove(),1500)}export{t as s};

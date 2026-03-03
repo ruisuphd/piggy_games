@@ -1,0 +1,1 @@
+.stack-container{flex:1;display:flex;flex-direction:column;align-items:center}.stack-canvas{border-radius:var(--r);box-shadow:var(--shadow);background:#1a1a2e;touch-action:none;cursor:pointer;max-width:100%}.stack-score-display{font-size:1.5rem;font-weight:800;margin:12px 0;text-align:center}.stack-hint{color:var(--text-sec);font-size:.85rem;text-align:center;margin-top:8px}
